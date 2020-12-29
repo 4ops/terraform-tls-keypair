@@ -40,29 +40,6 @@ variable "request_cert" {
   description = "Generates certificate signing request."
 }
 
-variable "allowed_uses" {
-  type = list(string)
-
-  default = [
-    "digital_signature",
-    "key_encipherment",
-    "server_auth",
-  ]
-
-  description = "List of keywords each describing a use that is permitted for the issued certificate. Used only if `request_cert` is `true`."
-}
-
-variable "days" {
-  type        = number
-  default     = 3650
-  description = "The number of days after initial issuing that the certificate will become invalid. Default is 10 years. Affects only self signed certificate. Used only if `request_cert` is `true`."
-
-  validation {
-    condition     = var.days > 0
-    error_message = "Value must be a positive."
-  }
-}
-
 variable "common_name" {
   type    = string
   default = ""
